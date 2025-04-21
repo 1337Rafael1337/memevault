@@ -1,0 +1,33 @@
+# Abhängigkeiten
+node_modules/
+client/node_modules/
+
+# Umgebungsvariablen
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime-Daten
+uploads/*
+!uploads/.gitkeep
+
+# Build-Ausgaben
+client/build/
+client/dist/
+
+# IDE-spezifische Dateien
+.vscode/
+.idea/
+.vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
