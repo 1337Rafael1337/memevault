@@ -412,3 +412,68 @@ button {
     margin-top: 2rem;
     text-align: center;
 }
+/* Admin Dashboard Styles */
+.admin-dashboard {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.admin-controls {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.refresh-button {
+    background: #6c757d;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .admin-table th,
+    .admin-table td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .admin-table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .admin-table tr:hover {
+        background-color: #f5f5f5;
+    }
+
+.actions-cell {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.action-button {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.view-button {
+    background: #007bff;
+}
+
+.delete-button {
+    background: #dc3545;
+}
+
+.status-controls select {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 3px;
+    border: 1px solid #ced4da;
+}

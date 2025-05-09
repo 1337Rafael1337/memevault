@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -12,6 +12,7 @@ import GameImageUpload from './pages/GameImageUpload';
 import GameMemeEditor from './pages/GameMemeEditor';
 import GameVoting from './pages/GameVoting';
 import GameResults from './pages/GameResults';
+import AdminDashboard from './pages/AdminDashboard';
 import './App.css';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
                 <Header />
                 <main className="container">
                     <Routes>
-                        {/* Urspr�ngliche Routen */}
+                        {/* Ursprüngliche Routen */}
                         <Route path="/" element={<Home />} />
                         <Route path="/upload" element={<UploadImage />} />
                         <Route path="/create/:imageId" element={<MemeEditor />} />
@@ -35,6 +36,9 @@ function App() {
                         <Route path="/game/:gameId/create-meme" element={<GameMemeEditor />} />
                         <Route path="/game/:gameId/vote" element={<GameVoting />} />
                         <Route path="/game/:gameId/results" element={<GameResults />} />
+
+                        {/* Admin-Route */}
+                        <Route path="/admin" element={<AdminDashboard />} />
                     </Routes>
                 </main>
             </div>

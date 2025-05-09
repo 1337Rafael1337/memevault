@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -12,6 +12,7 @@ const Header = () => {
                         <li><Link to="/upload">Bild hochladen</Link></li>
                         <li><Link to="/games/create">Spiel erstellen</Link></li>
                         <li><Link to="/games/join">Spiel beitreten</Link></li>
+                        <li><Link to="/admin">Admin</Link></li>
                     </ul>
                 </nav>
             </div>

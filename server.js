@@ -526,6 +526,94 @@ app.get('/api/games/:gameId/results', async (req, res) => {
     }
 });
 
+// Admin-Routen für Spielverwaltung
+
+// Alle Spiele mit detaillierten Informationen abrufen
+app.get('/api/admin/games', async (req, res) => {
+    try {
+        const games = await Game.find().sort({ createdAt: -1 });
+
+        // Erweiterte Informationen für jedes Spiel abrufen
+        const gamesWithDetails = await Promise.all(games.map(async game => {
+            const imageCount = await Image.countDocuments({ gameId: game._id });
+            const memeCount = await Meme.countDocuments({ gameId: game._id });
+            const voteCount = await Vote.countDocuments({ gameId: game._id });
+
+            return {
+                ...game.toObject(),
+                stats: {
+                    imageCount,
+                    memeCount,
+                    voteCount
+                }
+            };
+        }));
+
+        res.json(gamesWithDetails);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Fehler', error: error.message });
+    }
+});
+
+// Spiel-Status manuell ändern
+app.post('/api/admin/games/:id/change-status', async (req, res) => {
+    try {
+        const { status } = req.body;
+
+        if (!['collecting', 'creating', 'voting', 'completed'].includes(status)) {
+            return res.status(400).json({ message: 'Ungültiger Status' });
+        }
+
+        const game = await Game.findById(req.params.id);
+
+        if (!game) {
+            return res.status(404).json({ message: 'Spiel nicht gefunden' });
+        }
+
+        game.status = status;
+        game.phaseEndTime = new Date(Date.now() + 10 * 60 * 1000);
+
+        await game.save();
+        res.json(game);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Fehler', error: error.message });
+    }
+});
+
+// Spiel löschen
+app.delete('/api/admin/games/:id', async (req, res) => {
+    try {
+        const game = await Game.findById(req.params.id);
+
+        if (!game) {
+            return res.status(404).json({ message: 'Spiel nicht gefunden' });
+        }
+
+        // Zugehörige Bilder, Memes und Votes löschen
+        const images = await Image.find({ gameId: game._id });
+
+        // Bilder aus dem Dateisystem löschen
+        for (const image of images) {
+            const imagePath = path.join(__dirname, 'uploads', image.imagePath);
+            if (fs.existsSync(imagePath)) {
+                fs.unlinkSync(imagePath);
+            }
+        }
+
+        // Datenbank-Einträge löschen
+        await Image.deleteMany({ gameId: game._id });
+        await Meme.deleteMany({ gameId: game._id });
+        await Vote.deleteMany({ gameId: game._id });
+
+        // Spiel löschen
+        await Game.findByIdAndDelete(req.params.id);
+
+        res.json({ message: 'Spiel und zugehörige Daten wurden gelöscht' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server Fehler', error: error.message });
+    }
+});
+
 // Upload-Ordner erstellen, falls er nicht existiert
 const fs = require('fs');
 if (!fs.existsSync('uploads')) {
