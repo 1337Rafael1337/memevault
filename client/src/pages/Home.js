@@ -1,57 +1,49 @@
-import React, { useState, useEffect } from 'react';
+﻿// src/pages/Home.js
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 const Home = () => {
-    const [memes, setMemes] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchMemes = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/memes');
-                setMemes(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Fehler beim Laden der Memes', error);
-                setLoading(false);
-            }
-        };
-
-        fetchMemes();
-    }, []);
-
-    if (loading) return <div>Lade Memes...</div>;
-
     return (
         <div className="home">
-            <h2>Neueste Memes</h2>
-
-            <div className="memes-grid">
-                {memes.length > 0 ? (
-                    memes.map(meme => (
-                        <div key={meme._id} className="meme-card">
-                            <Link to={`/meme/${meme._id}`}>
-                                <div className="meme-image">
-                                    <img
-                                        src={`http://localhost:5000/${meme.imageId.imagePath}`}
-                                        alt={meme.imageId.title || 'Meme'}
-                                    />
-                                    <div className="meme-text-overlay">
-                                        <div className="top-text">{meme.topText}</div>
-                                        <div className="bottom-text">{meme.bottomText}</div>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    ))
-                ) : (
-                    <p>Noch keine Memes vorhanden. <Link to="/upload">Erstelle das erste!</Link></p>
-                )}
+            <div className="welcome-section">
+                <h2>Willkommen bei MemeVault</h2>
+                <p>Die ultimative Meme-Party-Plattform für dich und deine Freunde!</p>
             </div>
 
-            <div className="create-button">
-                <Link to="/upload" className="btn btn-primary">Neues Meme erstellen</Link>
+            <div className="action-cards">
+                <div className="action-card">
+                    <h3>Neues Spiel erstellen</h3>
+                    <p>Starte ein neues Meme-Spiel und lade deine Freunde ein.</p>
+                    <Link to="/games/create" className="btn btn-primary">Spiel erstellen</Link>
+                </div>
+
+                <div className="action-card">
+                    <h3>Einem Spiel beitreten</h3>
+                    <p>Tritt einem bestehenden Spiel mit einem Code bei.</p>
+                    <Link to="/games/join" className="btn btn-primary">Spiel beitreten</Link>
+                </div>
+            </div>
+
+            <div className="how-to-play">
+                <h3>So funktioniert's:</h3>
+                <ol>
+                    <li>
+                        <strong>Spiel erstellen oder beitreten</strong>
+                        <p>Starte ein neues Spiel oder tritt einem bestehenden bei.</p>
+                    </li>
+                    <li>
+                        <strong>Phase 1: Bilder sammeln</strong>
+                        <p>Alle Spieler laden lustige Bilder hoch, die als Grundlage für Memes dienen.</p>
+                    </li>
+                    <li>
+                        <strong>Phase 2: Memes erstellen</strong>
+                        <p>Aus den hochgeladenen Bildern erstellt jeder Spieler witzige Memes.</p>
+                    </li>
+                    <li>
+                        <strong>Phase 3: Abstimmen</strong>
+                        <p>Alle stimmen für ihre Lieblings-Memes ab. Wer die meisten Stimmen bekommt, gewinnt!</p>
+                    </li>
+                </ol>
             </div>
         </div>
     );
