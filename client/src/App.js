@@ -1,10 +1,8 @@
-﻿import React from 'react';
+﻿// src/App.js
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
-import UploadImage from './pages/UploadImage';
-import MemeEditor from './pages/MemeEditor';
-import MemeDetails from './pages/MemeDetails';
 import CreateGame from './pages/CreateGame';
 import JoinGame from './pages/JoinGame';
 import GameLobby from './pages/GameLobby';
@@ -22,13 +20,10 @@ function App() {
                 <Header />
                 <main className="container">
                     <Routes>
-                        {/* Ursprüngliche Routen */}
+                        {/* Hauptseite */}
                         <Route path="/" element={<Home />} />
-                        <Route path="/upload" element={<UploadImage />} />
-                        <Route path="/create/:imageId" element={<MemeEditor />} />
-                        <Route path="/meme/:memeId" element={<MemeDetails />} />
 
-                        {/* Neue Spiel-Routen */}
+                        {/* Spiel-Routen */}
                         <Route path="/games/create" element={<CreateGame />} />
                         <Route path="/games/join" element={<JoinGame />} />
                         <Route path="/game/:gameId" element={<GameLobby />} />
