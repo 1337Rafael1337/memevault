@@ -1,4 +1,4 @@
-/* Grundlegende Stile */
+﻿/* Grundlegende Stile */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -214,3 +214,201 @@ button {
     .btn-primary:hover {
         background: #0069d9;
     }
+
+/* Spiel-bezogene Stile */
+
+.create-game, .join-game {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.game-lobby {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.game-info {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+.participants {
+    margin: 1.5rem 0;
+}
+
+    .participants ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .participants li {
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
+    }
+
+.phase-content {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f0f8ff;
+    border-radius: 5px;
+    border-left: 4px solid #007bff;
+}
+
+.admin-controls {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.game-image-upload, .game-meme-editor, .game-voting, .game-results {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.secondary-button {
+    background: #6c757d;
+}
+
+    .secondary-button:hover {
+        background: #5a6268;
+    }
+
+/* Bild-Auswahl im Meme-Editor */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.image-item {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+    .image-item:hover {
+        transform: scale(1.05);
+    }
+
+    .image-item.selected {
+        border-color: #007bff;
+    }
+
+    .image-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+/* Abstimmungsseite */
+.meme-voting-card {
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.meme-info {
+    padding: 1rem;
+}
+
+.creator {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.vote-button {
+    background: #28a745;
+    width: 100%;
+}
+
+    .vote-button:hover {
+        background: #218838;
+    }
+
+.voted-button {
+    background: #6c757d;
+    width: 100%;
+    cursor: not-allowed;
+}
+
+/* Ergebnisseite */
+.results-container {
+    margin-top: 2rem;
+}
+
+.result-card {
+    position: relative;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.rank {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.winner {
+    border: 3px solid gold;
+}
+
+.winner-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: gold;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.result-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.back-link {
+    margin-top: 2rem;
+    text-align: center;
+}
