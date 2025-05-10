@@ -4,18 +4,17 @@ FROM node:18-alpine as build
 # Arbeitsverzeichnis
 WORKDIR /app
 
-# Backend-Abhängigkeiten installieren
-COPY package*.json ./
-RUN npm ci
-
-# Frontend-Abhängigkeiten installieren und bauen
-COPY client/package*.json ./client/
-RUN cd client && npm ci
-COPY client ./client
-RUN cd client && npm run build
-
-# Alle Backend-Dateien kopieren
+# Gesamtes Projekt kopieren (einschließlich client)
 COPY . .
+
+# Backend-Abhängigkeiten installieren (ohne postinstall-Hook)
+RUN npm ci --ignore-scripts
+
+# Frontend-Abhängigkeiten separat installieren
+RUN cd client && npm ci
+
+# Frontend bauen
+RUN cd client && npm run build
 
 # Produktions-Image
 FROM node:18-alpine
@@ -27,7 +26,6 @@ COPY --from=build /app/package*.json ./
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/client/build ./client/build
 COPY --from=build /app/server.js ./
-COPY --from=build /app/.env.example ./.env
 
 # Uploads-Verzeichnis erstellen
 RUN mkdir -p uploads
