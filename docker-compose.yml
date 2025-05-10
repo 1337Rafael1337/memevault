@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/memevault
+      - PORT=5000
+      - NODE_ENV=production
+    volumes:
+      - uploads:/app/uploads
+    networks:
+      - memevault-network
+
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - memevault-network
+
+networks:
+  memevault-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+  uploads:

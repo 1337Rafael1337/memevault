@@ -17,6 +17,23 @@ app.use((req, res, next) => {
     next();
 });
 
+// Statische Dateien aus dem Build-Verzeichnis servieren im Produktionsmodus
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+
+    // Für alle nicht-API-Routen das Frontend servieren
+    app.get('*', (req, res, next) => {
+        if (req.url.startsWith('/api')) {
+            return next();
+        }
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+}
+// Stelle sicher, dass der uploads-Ordner existiert
+if (!fs.existsSync('uploads')) {
+    fs.mkdirSync('uploads');
+}
+
 // Multer Konfiguration für Datei-Uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
