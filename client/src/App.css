@@ -19,11 +19,43 @@ body {
 
 /* Header */
 .header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
+    background-color: #333366;
+    padding: 10px 0;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+    .nav-list a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .nav-list a:hover {
+            color: #aa88ff;
+        }
     .header h1 {
         display: inline-block;
         margin-right: 2rem;
