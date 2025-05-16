@@ -1,14 +1,16 @@
-﻿// src/components/Header.js
+// src/components/Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <header className="header">
-            <div className="container">
-                <h1>MemeVault</h1>
+            <div className="container header-container">
+                <Link to="/" className="logo-link">
+                    <img src="/memevault-logo.png" alt="MemeVault Logo" className="logo-image" />
+                </Link>
                 <nav>
-                    <ul>
+                    <ul className="nav-list">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/games/create">Spiel erstellen</Link></li>
                         <li><Link to="/games/join">Spiel beitreten</Link></li>
@@ -17,6 +19,7 @@ const Header = () => {
                 </nav>
             </div>
         </header>
+
     );
 };
 

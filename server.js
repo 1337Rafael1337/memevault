@@ -1,8 +1,9 @@
-﻿const express = require('express');
+const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -11,11 +12,37 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use((req, res, next) => {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     next();
 });
+
+// Statische Dateien aus dem Build-Verzeichnis servieren im Produktionsmodus
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+
+    // Für alle nicht-API-Routen das Frontend servieren
+    app.get('*', (req, res, next) => {
+        // API-Routen nicht abfangen
+        if (req.path.startsWith('/api')) {
+            return next();
+        }
+
+        // Nur auf GET-Anfragen reagieren (nicht z. B. POST)
+        if (req.method !== 'GET') {
+            return next();
+        }
+
+        // index.html zurückgeben
+        res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+    });
+
+}
+// Stelle sicher, dass der uploads-Ordner existiert
+if (!fs.existsSync('uploads')) {
+    fs.mkdirSync('uploads');
+}
 
 // Multer Konfiguration für Datei-Uploads
 const storage = multer.diskStorage({
@@ -442,7 +469,6 @@ app.delete('/api/admin/games/:id', async (req, res) => {
 });
 
 // Upload-Ordner erstellen, falls er nicht existiert
-const fs = require('fs');
 if (!fs.existsSync('uploads')) {
     fs.mkdirSync('uploads');
 }

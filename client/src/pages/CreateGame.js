@@ -66,7 +66,7 @@ const CreateGame = () => {
                         id="playerName"
                         value={playerName}
                         onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder="Wie heißt du?"
+                        placeholder="Wie heiÃŸt du?"
                     />
                 </div>
 

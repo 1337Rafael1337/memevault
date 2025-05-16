@@ -21,9 +21,9 @@ const GameImageUpload = () => {
                 setGame(response.data);
                 setGameLoading(false);
 
-                // Überprüfen, ob die Phase richtig ist
+                // ÃœberprÃ¼fen, ob die Phase richtig ist
                 if (response.data.status !== 'collecting') {
-                    setError('In dieser Phase können keine Bilder mehr hochgeladen werden');
+                    setError('In dieser Phase kÃ¶nnen keine Bilder mehr hochgeladen werden');
                 }
             } catch (err) {
                 setError('Fehler beim Laden des Spiels');
@@ -53,7 +53,7 @@ const GameImageUpload = () => {
         e.preventDefault();
 
         if (!file) {
-            setError('Bitte wähle ein Bild aus');
+            setError('Bitte wÃ¤hle ein Bild aus');
             return;
         }
 
@@ -71,7 +71,7 @@ const GameImageUpload = () => {
                 }
             });
 
-            // Zurück zur Spiellobby
+            // ZurÃ¼ck zur Spiellobby
             navigate(`/game/${gameId}`);
         } catch (err) {
             if (err.response?.data?.message) {
@@ -88,14 +88,14 @@ const GameImageUpload = () => {
 
     return (
         <div className="game-image-upload">
-            <h2>Bild für "{game.name}" hochladen</h2>
+            <h2>Bild fÃ¼r "{game.name}" hochladen</h2>
 
             {game.status !== 'collecting' ? (
                 <div className="error-message">
-                    In dieser Phase können keine Bilder mehr hochgeladen werden.
+                    In dieser Phase kÃ¶nnen keine Bilder mehr hochgeladen werden.
                     <br />
                     <button onClick={() => navigate(`/game/${gameId}`)}>
-                        Zurück zur Spiellobby
+                        ZurÃ¼ck zur Spiellobby
                     </button>
                 </div>
             ) : (
@@ -112,7 +112,7 @@ const GameImageUpload = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="image">Bild auswählen:</label>
+                        <label htmlFor="image">Bild auswÃ¤hlen:</label>
                         <input
                             type="file"
                             id="image"
@@ -140,7 +140,7 @@ const GameImageUpload = () => {
                             onClick={() => navigate(`/game/${gameId}`)}
                             className="secondary-button"
                         >
-                            Zurück zur Lobby
+                            ZurÃ¼ck zur Lobby
                         </button>
                     </div>
                 </form>

@@ -48,7 +48,7 @@ const GameLobby = () => {
         return () => clearInterval(timerInterval);
     }, [timeLeft]);
 
-    // Phase wechseln (nur für den Ersteller)
+    // Phase wechseln (nur fÃ¼r den Ersteller)
     const handleNextPhase = async () => {
         try {
             const response = await axios.post(`/api/games/${gameId}/next-phase`);
@@ -72,7 +72,7 @@ const GameLobby = () => {
                 return (
                     <div className="phase-content">
                         <h3>Phase 1: Bilder sammeln</h3>
-                        <p>Lade Bilder hoch, die als Grundlage für Memes dienen sollen.</p>
+                        <p>Lade Bilder hoch, die als Grundlage fÃ¼r Memes dienen sollen.</p>
                         <button
                             onClick={() => navigate(`/game/${gameId}/upload`)}
                             className="btn btn-primary"
@@ -98,7 +98,7 @@ const GameLobby = () => {
                 return (
                     <div className="phase-content">
                         <h3>Phase 3: Abstimmen</h3>
-                        <p>Stimme für die besten Memes ab.</p>
+                        <p>Stimme fÃ¼r die besten Memes ab.</p>
                         <button
                             onClick={() => navigate(`/game/${gameId}/vote`)}
                             className="btn btn-primary"
@@ -141,7 +141,7 @@ const GameLobby = () => {
                         game.status === 'creating' ? 'Memes erstellen' :
                             game.status === 'voting' ? 'Abstimmen' : 'Abgeschlossen'
                 }</p>
-                <p><strong>Zeit übrig:</strong> {formatTime(timeLeft)}</p>
+                <p><strong>Zeit Ã¼brig:</strong> {formatTime(timeLeft)}</p>
             </div>
 
             <div className="participants">
@@ -161,7 +161,7 @@ const GameLobby = () => {
                         onClick={handleNextPhase}
                         className="btn"
                     >
-                        Nächste Phase starten
+                        NÃ¤chste Phase starten
                     </button>
                 </div>
             )}

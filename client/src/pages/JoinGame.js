@@ -39,7 +39,7 @@ const JoinGame = () => {
             navigate(`/game/${response.data._id}`);
         } catch (err) {
             if (err.response?.status === 404) {
-                setError('Spiel nicht gefunden. Überprüfe den Code.');
+                setError('Spiel nicht gefunden. ÃœberprÃ¼fe den Code.');
             } else if (err.response?.status === 400) {
                 setError(err.response.data.message);
             } else {
@@ -72,7 +72,7 @@ const JoinGame = () => {
                         id="playerName"
                         value={playerName}
                         onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder="Wie heißt du?"
+                        placeholder="Wie heiÃŸt du?"
                     />
                 </div>
 

@@ -1,0 +1,7 @@
+﻿node_modules
+client/node_modules
+.git
+.github
+.vscode
+uploads/*
+*.log
