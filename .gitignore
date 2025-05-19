@@ -1,8 +1,10 @@
-# Abhängigkeiten
+# Abhï¿½ngigkeiten
 node_modules/
 client/node_modules/
 
 # Umgebungsvariablen
+.env.dev
+.env.prod
 .env
 .env.local
 .env.development.local

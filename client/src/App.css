@@ -588,3 +588,47 @@ button {
     .how-to-play p {
         color: #666;
     }
+
+/* Login-Seite Stile */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+    .login-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .login-form input {
+        padding: 0.8rem;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+    .login-form button {
+        padding: 0.8rem;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+        .login-form button:hover {
+            background: #0069d9;
+        }
+
+        .login-form button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }

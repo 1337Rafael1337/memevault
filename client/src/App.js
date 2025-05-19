@@ -11,6 +11,10 @@ import GameMemeEditor from './pages/GameMemeEditor';
 import GameVoting from './pages/GameVoting';
 import GameResults from './pages/GameResults';
 import AdminDashboard from './pages/AdminDashboard';
+import Login from './pages/Login';
+import PrivateRoute from './components/PrivateRoute';
+import Unauthorized from './pages/Unauthorized';
+import './utils/axiosConfig';
 import './App.css';
 
 function App() {
@@ -20,10 +24,10 @@ function App() {
                 <Header />
                 <main className="container">
                     <Routes>
-                        {/* Hauptseite */}
+                        {/* Öffentliche Routen */}
                         <Route path="/" element={<Home />} />
-
-                        {/* Spiel-Routen */}
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/unauthorized" element={<Unauthorized />} />
                         <Route path="/games/create" element={<CreateGame />} />
                         <Route path="/games/join" element={<JoinGame />} />
                         <Route path="/game/:gameId" element={<GameLobby />} />
@@ -32,8 +36,12 @@ function App() {
                         <Route path="/game/:gameId/vote" element={<GameVoting />} />
                         <Route path="/game/:gameId/results" element={<GameResults />} />
 
-                        {/* Admin-Route */}
-                        <Route path="/admin" element={<AdminDashboard />} />
+                        {/* Geschützte Admin-Route mit Rollenprüfung */}
+                        <Route path="/admin" element={
+                            <PrivateRoute requiredRole="admin">
+                                <AdminDashboard />
+                            </PrivateRoute>
+                        } />
                     </Routes>
                 </main>
             </div>
