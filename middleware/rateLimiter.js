@@ -1,10 +1,9 @@
 const rateLimit = require('express-rate-limit');
-const { logger } = require('../utils/logger');
+const logger = require('../utils/logger');
 
-// Allgemeiner Rate Limiter
 const apiLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 Minuten
-    max: 100, // Limit jede IP auf 100 Requests pro Fenster
+    max: 100,
     standardHeaders: true,
     legacyHeaders: false,
     handler: (req, res) => {
@@ -13,15 +12,14 @@ const apiLimiter = rateLimit({
             path: req.originalUrl
         });
         res.status(429).json({
-            message: 'Too many requests, please try again later.'
+            message: 'Zu viele Anfragen, bitte versuchen Sie es später erneut.'
         });
     }
 });
 
-// Strikterer Rate Limiter für Login-Anfragen
 const loginLimiter = rateLimit({
     windowMs: 60 * 60 * 1000, // 1 Stunde
-    max: 5, // 5 Login-Versuche pro Stunde
+    max: 5,
     standardHeaders: true,
     legacyHeaders: false,
     handler: (req, res) => {
@@ -30,7 +28,7 @@ const loginLimiter = rateLimit({
             username: req.body.username
         });
         res.status(429).json({
-            message: 'Too many login attempts, please try again later.'
+            message: 'Zu viele Login-Versuche, bitte versuchen Sie es später erneut.'
         });
     }
 });

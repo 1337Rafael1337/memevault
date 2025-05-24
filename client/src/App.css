@@ -632,3 +632,196 @@ button {
             background: #6c757d;
             cursor: not-allowed;
         }
+/* ===== SETUP ADMIN SEITE ===== */
+.setup-admin-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.setup-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+    .setup-card h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+
+    .setup-card h2 {
+        color: #555;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+    .setup-card .loading {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+    }
+
+.credentials-box {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+    .credentials-box p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .credentials-box strong {
+        color: #495057;
+    }
+
+.password-display {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.setup-card .warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 1px solid #ffeaa7;
+}
+
+.setup-card .form-group {
+    margin-bottom: 20px;
+}
+
+    .setup-card .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #495057;
+        font-weight: 500;
+    }
+
+.setup-card .form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+    .setup-card .form-control:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .setup-card .form-control:disabled {
+        background-color: #e9ecef;
+        cursor: not-allowed;
+    }
+
+.setup-card .btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.setup-card .btn-primary {
+    background-color: #667eea;
+    color: white;
+}
+
+    .setup-card .btn-primary:hover:not(:disabled) {
+        background-color: #5a67d8;
+        transform: translateY(-1px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+.setup-card .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+    .setup-card .btn-secondary:hover:not(:disabled) {
+        background-color: #5a6268;
+    }
+
+.setup-card .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.setup-card .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+    .setup-card .button-group .btn {
+        width: auto;
+        flex: 1;
+    }
+
+/* Alert Styles (falls noch nicht vorhanden) */
+.alert {
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.alert-error {
+    background-color: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+}
+
+.alert-success {
+    background-color: #efe;
+    color: #3c3;
+    border: 1px solid #cfc;
+}
+
+/* Responsive für Setup Admin */
+@media (max-width: 600px) {
+    .setup-card {
+        padding: 30px 20px;
+    }
+
+        .setup-card h1 {
+            font-size: 1.5rem;
+        }
+
+        .setup-card .button-group {
+            flex-direction: column;
+        }
+
+            .setup-card .button-group .btn {
+                width: 100%;
+            }
+}

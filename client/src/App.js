@@ -1,7 +1,12 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import './App.css';
+
+// Components
 import Header from './components/Header';
+import PrivateRoute from './components/PrivateRoute';
+
+// Pages
 import Home from './pages/Home';
 import CreateGame from './pages/CreateGame';
 import JoinGame from './pages/JoinGame';
@@ -10,40 +15,45 @@ import GameImageUpload from './pages/GameImageUpload';
 import GameMemeEditor from './pages/GameMemeEditor';
 import GameVoting from './pages/GameVoting';
 import GameResults from './pages/GameResults';
-import AdminDashboard from './pages/AdminDashboard';
 import Login from './pages/Login';
-import PrivateRoute from './components/PrivateRoute';
+import AdminDashboard from './pages/AdminDashboard';
 import Unauthorized from './pages/Unauthorized';
-import './utils/axiosConfig';
-import './App.css';
+import SetupAdmin from './pages/SetupAdmin'; // NEU
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <Header />
-                <main className="container">
-                    <Routes>
-                        {/* Öffentliche Routen */}
-                        <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/unauthorized" element={<Unauthorized />} />
-                        <Route path="/games/create" element={<CreateGame />} />
-                        <Route path="/games/join" element={<JoinGame />} />
-                        <Route path="/game/:gameId" element={<GameLobby />} />
-                        <Route path="/game/:gameId/upload" element={<GameImageUpload />} />
-                        <Route path="/game/:gameId/create-meme" element={<GameMemeEditor />} />
-                        <Route path="/game/:gameId/vote" element={<GameVoting />} />
-                        <Route path="/game/:gameId/results" element={<GameResults />} />
+                <Routes>
+                    {/* Öffentliche Routen */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/create" element={<CreateGame />} />
+                    <Route path="/join" element={<JoinGame />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/setup-admin" element={<SetupAdmin />} /> {/* NEU */}
+                    <Route path="/unauthorized" element={<Unauthorized />} />
 
-                        {/* Geschützte Admin-Route mit Rollenprüfung */}
-                        <Route path="/admin" element={
+                    {/* Spiel-Routen */}
+                    <Route path="/game/:gameId/lobby" element={<GameLobby />} />
+                    <Route path="/game/:gameId/upload" element={<GameImageUpload />} />
+                    <Route path="/game/:gameId/create-meme" element={<GameMemeEditor />} />
+                    <Route path="/game/:gameId/vote" element={<GameVoting />} />
+                    <Route path="/game/:gameId/results" element={<GameResults />} />
+
+                    {/* Geschützte Admin-Routen */}
+                    <Route
+                        path="/admin"
+                        element={
                             <PrivateRoute requiredRole="admin">
                                 <AdminDashboard />
                             </PrivateRoute>
-                        } />
-                    </Routes>
-                </main>
+                        }
+                    />
+
+                    {/* Catch-all redirect */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
             </div>
         </Router>
     );

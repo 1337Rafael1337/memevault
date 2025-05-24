@@ -1,0 +1,58 @@
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-23 23:18:21"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-23 23:18:23"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-23 23:18:28"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-23 23:18:28","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-23 23:18:28"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:35:38"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:35:38","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:35:38"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:40:30"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:40:30","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:40:30"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:40:32"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:40:32","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:40:32"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:41:16"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:41:16","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:41:16"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:43:48"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:43:48","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:43:48"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:47:11"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:47:11","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:47:11"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:47:20"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:47:20","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:47:20"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:47:25"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:47:25","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:47:25"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:49:23"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:49:23","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:49:23"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:49:35"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:49:35","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:49:35"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:49:49"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:49:49","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:49:49"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:50:27"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:50:27","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:50:27"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:53:03"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:53:03","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:53:03"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:53:06"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:53:06","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:53:06"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:56:36"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:57:47"}
+{"auditLogRetention":90,"cleanupSchedule":"0 0 * * *","gameRetention":30,"level":"info","message":"Cron jobs initialized","service":"memevault-api","timestamp":"2025-05-24 11:57:47","timezone":"Europe/Berlin"}
+{"level":"info","message":"Cron-Jobs initialisiert","service":"memevault-api","timestamp":"2025-05-24 11:57:47"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 11:58:35"}
+{"level":"info","message":"Server läuft auf Port 5000","service":"memevault-api","timestamp":"2025-05-24 12:01:30"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 12:01:30"}
+{"level":"info","message":"Server läuft auf Port 5000","service":"memevault-api","timestamp":"2025-05-24 12:01:36"}
+{"level":"info","message":"Mit MongoDB verbunden","service":"memevault-api","timestamp":"2025-05-24 12:01:36"}
+{"level":"info","message":"Admin user created","service":"memevault-api","timestamp":"2025-05-24 12:01:46"}
+{"error":{"code":11000,"errorLabelSet":{},"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: memevault.users index: username_1 dup key: { username: \"admin\" }","index":0,"keyPattern":{"username":1},"keyValue":{"username":"admin"}},"index":0,"keyPattern":{"username":1},"keyValue":{"username":"admin"}},"level":"error","message":"Error creating admin user","service":"memevault-api","timestamp":"2025-05-24 12:01:46"}

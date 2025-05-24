@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
@@ -8,21 +8,11 @@ const Login = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const location = useLocation();
-
-    // Zielseite nach erfolgreichem Login
-    const from = location.state?.from?.pathname || '/admin';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (!username || !password) {
-            setError('Benutzername und Passwort werden benötigt');
-            return;
-        }
-
-        setLoading(true);
         setError('');
+        setLoading(true);
 
         try {
             const response = await axios.post('/api/auth/login', {
@@ -30,51 +20,81 @@ const Login = () => {
                 password
             });
 
-            // Token und Benutzerinfo im localStorage speichern
-            localStorage.setItem('authToken', response.data.token);
+            // Token und Benutzerinfos speichern
+            localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
 
-            // Redirect zur vorherigen Seite oder Admin-Dashboard
-            navigate(from, { replace: true });
-        } catch (err) {
-            setError(err.response?.data?.message || 'Login fehlgeschlagen');
+            // Axios Default Header setzen
+            axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+
+            // Zur Admin-Seite weiterleiten
+            navigate('/admin');
+        } catch (error) {
+            setError(error.response?.data?.message || 'Login fehlgeschlagen');
+        } finally {
             setLoading(false);
         }
     };
 
     return (
         <div className="login-container">
-            <h2>Admin Login</h2>
+            <div className="login-card">
+                <h1>Admin Login</h1>
 
-            <form onSubmit={handleSubmit} className="login-form">
-                <div className="form-group">
-                    <label htmlFor="username">Benutzername:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                {error && (
+                    <div className="alert alert-error">
+                        {error}
+                    </div>
+                )}
+
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username">Benutzername</label>
+                        <input
+                            type="text"
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                            placeholder="Admin-Benutzername"
+                            className="form-control"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="password">Passwort</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            placeholder="Passwort"
+                            className="form-control"
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
                         disabled={loading}
-                    />
+                        className="btn btn-primary"
+                    >
+                        {loading ? 'Anmelden...' : 'Anmelden'}
+                    </button>
+                </form>
+
+                <div className="login-footer">
+                    <hr className="divider" />
+                    <p className="setup-text">
+                        Noch kein Admin-Account vorhanden?
+                    </p>
+                    <Link to="/setup-admin" className="setup-link">
+                        <button className="btn btn-secondary">
+                            Admin-Setup starten
+                        </button>
+                    </Link>
                 </div>
-
-                <div className="form-group">
-                    <label htmlFor="password">Passwort:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        disabled={loading}
-                    />
-                </div>
-
-                {error && <div className="error-message">{error}</div>}
-
-                <button type="submit" disabled={loading}>
-                    {loading ? 'Anmeldung...' : 'Anmelden'}
-                </button>
-            </form>
+            </div>
         </div>
     );
 };

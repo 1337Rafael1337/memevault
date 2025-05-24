@@ -1,19 +1,18 @@
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: [true, 'Username is required'],
+        required: [true, 'Benutzername ist erforderlich'],
         unique: true,
         trim: true,
-        minlength: [4, 'Username must be at least 4 characters']
+        minlength: [4, 'Benutzername muss mindestens 4 Zeichen lang sein']
     },
     password: {
         type: String,
-        required: [true, 'Password is required'],
-        minlength: [8, 'Password must be at least 8 characters']
+        required: [true, 'Passwort ist erforderlich'],
+        minlength: [8, 'Passwort muss mindestens 8 Zeichen lang sein']
     },
     role: {
         type: String,
@@ -34,10 +33,38 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Validiere unique fields
-userSchema.plugin(uniqueValidator, { message: '{PATH} already exists' });
+// Eigene Validierungsmethode für eindeutige Felder
+userSchema.pre('save', async function (next) {
+    // Nur prüfen, wenn Benutzername geändert wurde
+    if (this.isModified('username')) {
+        const existingUser = await this.constructor.findOne({
+            username: this.username,
+            _id: { $ne: this._id } // Eigenen Datensatz ausschließen bei Updates
+        });
 
-// Hash password vor dem Speichern
+        if (existingUser) {
+            const err = new Error('Benutzername existiert bereits');
+            err.name = 'ValidationError';
+            err.errors = { username: { message: 'Benutzername existiert bereits' } };
+            return next(err);
+        }
+    }
+    next();
+});
+
+// Statische Methode zur Validierung von eindeutigen Feldern bei neuen Dokumenten
+userSchema.statics.checkUnique = async function (username) {
+    const existingUser = await this.findOne({ username });
+    if (existingUser) {
+        return {
+            isValid: false,
+            message: 'Benutzername existiert bereits'
+        };
+    }
+    return { isValid: true };
+};
+
+// Hash-Passwort vor dem Speichern
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
 
@@ -55,6 +82,4 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
